@@ -1,0 +1,1697 @@
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Rafael Calmão | Modern Workplace Engineer</title>
+
+    <meta name="description"
+          content="Rafael Calmão — Modern Workplace Engineer focused on Microsoft 365, Exchange Online, Identity, Security and Purview.">
+
+    <style>
+        :root {
+            --bg: #080a0f;
+            --bg-soft: #0d1017;
+            --card: #11151d;
+            --card-hover: #151a23;
+            --border: rgba(255,255,255,.09);
+            --text: #f3f6fa;
+            --muted: #9aa5b1;
+            --blue: #0078d4;
+            --blue-light: #5aa9ff;
+            --max: 1180px;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: "Segoe UI", Arial, sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            line-height: 1.6;
+        }
+
+        a {
+            color: inherit;
+            text-decoration: none;
+        }
+
+        img {
+            max-width: 100%;
+            display: block;
+        }
+
+        .container {
+            width: min(var(--max), calc(100% - 48px));
+            margin: auto;
+        }
+
+        /* NAV */
+
+        nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 1000;
+            background: rgba(8,10,15,.78);
+            backdrop-filter: blur(16px);
+            border-bottom: 1px solid rgba(255,255,255,.06);
+        }
+
+        .nav-inner {
+            max-width: var(--max);
+            margin: auto;
+            height: 72px;
+            padding: 0 24px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .logo {
+            font-size: 18px;
+            font-weight: 700;
+            letter-spacing: .4px;
+        }
+
+        .logo span {
+            color: var(--blue-light);
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 28px;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: var(--muted);
+            font-size: 14px;
+            transition: .2s ease;
+        }
+
+        .nav-links a:hover {
+            color: white;
+        }
+
+        /* HERO */
+
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            padding: 130px 0 90px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: "";
+            position: absolute;
+            width: 600px;
+            height: 600px;
+            background: rgba(0,120,212,.13);
+            filter: blur(120px);
+            border-radius: 50%;
+            top: 5%;
+            right: -180px;
+            pointer-events: none;
+        }
+
+        .hero-grid {
+            display: grid;
+            grid-template-columns: 1.25fr .75fr;
+            gap: 80px;
+            align-items: center;
+        }
+
+        .eyebrow {
+            color: var(--blue-light);
+            font-size: 13px;
+            font-weight: 700;
+            letter-spacing: 2px;
+            margin-bottom: 22px;
+        }
+
+        .hero h1 {
+            font-size: clamp(54px, 7vw, 94px);
+            line-height: .94;
+            letter-spacing: -4px;
+            margin-bottom: 30px;
+        }
+
+        .hero h1 span {
+            color: var(--blue-light);
+        }
+
+        .hero-description {
+            max-width: 690px;
+            color: var(--muted);
+            font-size: 20px;
+            line-height: 1.7;
+        }
+
+        .hero-actions {
+            display: flex;
+            gap: 14px;
+            margin-top: 35px;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 13px 22px;
+            border-radius: 8px;
+            font-size: 14px;
+            font-weight: 600;
+            border: 1px solid var(--border);
+            transition: .2s ease;
+        }
+
+        .btn-primary {
+            background: var(--blue);
+            border-color: var(--blue);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            background: #1689e5;
+        }
+
+        .btn-secondary:hover {
+            background: rgba(255,255,255,.05);
+        }
+
+        /* PROFILE */
+
+        .profile-wrapper {
+            display: flex;
+            justify-content: center;
+        }
+
+        .profile-frame {
+            width: min(360px, 100%);
+            aspect-ratio: 1 / 1;
+            border-radius: 28px;
+            padding: 8px;
+            background: linear-gradient(
+                145deg,
+                rgba(90,169,255,.7),
+                rgba(0,120,212,.15),
+                rgba(255,255,255,.04)
+            );
+            box-shadow: 0 35px 90px rgba(0,0,0,.45);
+        }
+
+        .profile-frame img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 22px;
+            background: #0c1016;
+        }
+
+        /* SECTIONS */
+
+        section {
+            padding: 110px 0;
+        }
+
+        .section-heading {
+            margin-bottom: 55px;
+        }
+
+        .section-heading .label {
+            color: var(--blue-light);
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            font-size: 12px;
+            font-weight: 700;
+            margin-bottom: 10px;
+        }
+
+        .section-heading h2 {
+            font-size: clamp(34px, 5vw, 52px);
+            letter-spacing: -2px;
+        }
+
+        .section-heading p {
+            color: var(--muted);
+            max-width: 700px;
+            margin-top: 15px;
+        }
+
+        /* EXPERTISE */
+
+        .expertise-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 18px;
+        }
+
+        .expertise-card {
+            padding: 28px;
+            min-height: 270px;
+            border: 1px solid var(--border);
+            background: var(--card);
+            border-radius: 14px;
+            transition: .25s ease;
+        }
+
+        .expertise-card:hover {
+            transform: translateY(-5px);
+            background: var(--card-hover);
+            border-color: rgba(90,169,255,.3);
+        }
+
+        .number {
+            color: var(--blue-light);
+            font-size: 13px;
+            font-weight: 700;
+            margin-bottom: 55px;
+        }
+
+        .expertise-card h3 {
+            font-size: 20px;
+            margin-bottom: 12px;
+        }
+
+        .expertise-card p {
+            color: var(--muted);
+            font-size: 14px;
+        }
+
+        /* EXPERIENCE */
+
+        .timeline {
+            position: relative;
+            max-width: 900px;
+        }
+
+        .timeline::before {
+            content: "";
+            position: absolute;
+            left: 8px;
+            top: 8px;
+            bottom: 8px;
+            width: 1px;
+            background: rgba(255,255,255,.12);
+        }
+
+        .timeline-item {
+            position: relative;
+            padding-left: 45px;
+            margin-bottom: 48px;
+        }
+
+        .timeline-item::before {
+            content: "";
+            position: absolute;
+            left: 3px;
+            top: 8px;
+            width: 11px;
+            height: 11px;
+            border-radius: 50%;
+            background: var(--blue);
+            box-shadow: 0 0 0 5px rgba(0,120,212,.12);
+        }
+
+        .timeline-item h3 {
+            font-size: 21px;
+            margin-bottom: 5px;
+        }
+
+        .timeline-item .meta {
+            color: var(--blue-light);
+            font-size: 13px;
+            margin-bottom: 10px;
+        }
+
+        .timeline-item p {
+            color: var(--muted);
+            max-width: 800px;
+        }
+
+        /* RESPONSIBILITIES */
+
+        .responsibility-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+        }
+
+        .responsibility-card {
+            border: 1px solid var(--border);
+            border-radius: 14px;
+            background: var(--card);
+            padding: 30px;
+        }
+
+        .responsibility-card h3 {
+            font-size: 19px;
+            margin-bottom: 22px;
+        }
+
+        .responsibility-card ul {
+            list-style: none;
+        }
+
+        .responsibility-card li {
+            color: var(--muted);
+            margin-bottom: 18px;
+            font-size: 14px;
+            padding-left: 18px;
+            position: relative;
+        }
+
+        .responsibility-card li::before {
+            content: "•";
+            position: absolute;
+            left: 0;
+            color: var(--blue-light);
+        }
+
+        .responsibility-card strong {
+            color: #e8edf3;
+            display: block;
+            margin-bottom: 4px;
+        }
+
+        /* CERTIFICATIONS */
+
+        .certifications-wrapper {
+            position: relative;
+        }
+
+        .cert-track-wrapper {
+            overflow: hidden;
+        }
+
+        .cert-track {
+            display: flex;
+            gap: 20px;
+            transition: transform .45s ease;
+        }
+
+        .cert-card {
+            flex: 0 0 calc((100% - 40px) / 3);
+            border: 1px solid var(--border);
+            background: var(--card);
+            border-radius: 14px;
+            overflow: hidden;
+        }
+
+        .cert-preview {
+            height: 300px;
+            background: #090c11;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .cert-preview iframe {
+            width: 100%;
+            height: 100%;
+            border: 0;
+        }
+
+        .cert-info {
+            padding: 22px;
+        }
+
+        .cert-info h3 {
+            font-size: 17px;
+            margin-bottom: 12px;
+        }
+
+        .cert-info a {
+            color: var(--blue-light);
+            font-size: 13px;
+            font-weight: 600;
+        }
+
+        .slider-controls {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: 25px;
+        }
+
+        .slider-buttons {
+            display: flex;
+            gap: 8px;
+        }
+
+        .slider-btn {
+            width: 42px;
+            height: 42px;
+            border-radius: 50%;
+            border: 1px solid var(--border);
+            background: var(--card);
+            color: white;
+            cursor: pointer;
+            font-size: 18px;
+            transition: .2s ease;
+        }
+
+        .slider-btn:hover {
+            background: rgba(255,255,255,.08);
+        }
+
+        .slider-status {
+            color: var(--muted);
+            font-size: 13px;
+        }
+
+        .dots {
+            display: flex;
+            gap: 7px;
+        }
+
+        .dot {
+            width: 7px;
+            height: 7px;
+            border-radius: 50%;
+            background: #3a414b;
+        }
+
+        .dot.active {
+            background: var(--blue-light);
+        }
+
+        /* PROJECT */
+
+        .project-card {
+            border: 1px solid var(--border);
+            background: var(--card);
+            border-radius: 18px;
+            overflow: hidden;
+        }
+
+        .project-top {
+            padding: 38px;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .project-label {
+            color: var(--blue-light);
+            font-size: 12px;
+            font-weight: 700;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            margin-bottom: 13px;
+        }
+
+        .project-top h3 {
+            font-size: 34px;
+            letter-spacing: -1px;
+            margin-bottom: 15px;
+        }
+
+        .project-description {
+            color: var(--muted);
+            max-width: 850px;
+            font-size: 16px;
+        }
+
+        .tech-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-top: 22px;
+        }
+
+        .tech-tag {
+            border: 1px solid rgba(90,169,255,.2);
+            background: rgba(0,120,212,.08);
+            color: #b9d9f7;
+            padding: 7px 11px;
+            border-radius: 6px;
+            font-size: 12px;
+        }
+
+        .project-images {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1px;
+            background: var(--border);
+        }
+
+        .project-image {
+            background: #090c11;
+            padding: 25px;
+        }
+
+        .project-image a {
+            display: block;
+            cursor: zoom-in;
+        }
+
+        .project-image img {
+            width: 100%;
+            height: 350px;
+            object-fit: contain;
+            background: #080a0f;
+            border-radius: 10px;
+            border: 1px solid var(--border);
+            transition: .25s ease;
+        }
+
+        .project-image img:hover {
+            transform: scale(1.015);
+        }
+
+        .image-caption {
+            margin-top: 14px;
+        }
+
+        .image-caption strong {
+            display: block;
+            font-size: 14px;
+        }
+
+        .image-caption span {
+            color: var(--muted);
+            font-size: 12px;
+        }
+
+        .project-details {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            padding: 38px;
+        }
+
+        .project-details h4 {
+            font-size: 18px;
+            margin-bottom: 17px;
+        }
+
+        .project-details ul {
+            list-style: none;
+        }
+
+        .project-details li {
+            position: relative;
+            padding-left: 18px;
+            margin-bottom: 13px;
+            color: var(--muted);
+            font-size: 14px;
+        }
+
+        .project-details li::before {
+            content: "•";
+            position: absolute;
+            left: 0;
+            color: var(--blue-light);
+        }
+
+        .project-details p {
+            color: var(--muted);
+            font-size: 14px;
+        }
+
+        /* CONTACT */
+
+        .contact-box {
+            border: 1px solid var(--border);
+            border-radius: 18px;
+            padding: 55px;
+            background:
+                radial-gradient(
+                    circle at 90% 10%,
+                    rgba(0,120,212,.14),
+                    transparent 35%
+                ),
+                var(--card);
+        }
+
+        .contact-box h2 {
+            font-size: clamp(36px, 5vw, 60px);
+            letter-spacing: -2px;
+            margin-bottom: 18px;
+        }
+
+        .contact-box p {
+            color: var(--muted);
+            max-width: 650px;
+            margin-bottom: 28px;
+        }
+
+        /* FOOTER */
+
+        footer {
+            padding: 35px 0;
+            border-top: 1px solid var(--border);
+        }
+
+        .footer-inner {
+            display: flex;
+            justify-content: space-between;
+            gap: 20px;
+            color: var(--muted);
+            font-size: 13px;
+        }
+
+        /* RESPONSIVE */
+
+        @media (max-width: 1050px) {
+
+            .hero-grid {
+                grid-template-columns: 1fr;
+                gap: 55px;
+            }
+
+            .profile-wrapper {
+                justify-content: flex-start;
+            }
+
+            .profile-frame {
+                width: 300px;
+            }
+
+            .expertise-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .responsibility-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+
+            .cert-card {
+                flex: 0 0 calc((100% - 20px) / 2);
+            }
+        }
+
+        @media (max-width: 700px) {
+
+            .container {
+                width: min(var(--max), calc(100% - 30px));
+            }
+
+            .nav-links {
+                display: none;
+            }
+
+            .hero {
+                padding-top: 120px;
+            }
+
+            .hero h1 {
+                font-size: 58px;
+                letter-spacing: -3px;
+            }
+
+            .hero-description {
+                font-size: 17px;
+            }
+
+            section {
+                padding: 80px 0;
+            }
+
+            .expertise-grid,
+            .responsibility-grid,
+            .project-images,
+            .project-details {
+                grid-template-columns: 1fr;
+            }
+
+            .cert-card {
+                flex: 0 0 100%;
+            }
+
+            .cert-preview {
+                height: 360px;
+            }
+
+            .project-top,
+            .project-details {
+                padding: 25px;
+            }
+
+            .project-top h3 {
+                font-size: 28px;
+            }
+
+            .project-image {
+                padding: 18px;
+            }
+
+            .project-image img {
+                height: 260px;
+            }
+
+            .contact-box {
+                padding: 32px 25px;
+            }
+
+            .footer-inner {
+                flex-direction: column;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+<!-- NAV -->
+
+<nav>
+    <div class="nav-inner">
+        <a href="#home" class="logo">
+            Rafael<span>.</span>
+        </a>
+
+        <ul class="nav-links">
+            <li><a href="#expertise">Expertise</a></li>
+            <li><a href="#experience">Experience</a></li>
+            <li><a href="#achievements">Achievements</a></li>
+            <li><a href="#responsibilities">What I Work With</a></li>
+            <li><a href="#certifications">Certifications</a></li>
+            <li><a href="#projects">Projects</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+    </div>
+</nav>
+
+
+<!-- HERO -->
+
+<section class="hero" id="home">
+    <div class="container">
+        <div class="hero-grid">
+
+            <div>
+                <div class="eyebrow">
+                    MICROSOFT 365 / MODERN WORKPLACE
+                </div>
+
+                <h1>
+                    Modern<br>
+                    <span>Workplace</span><br>
+                    Engineer
+                </h1>
+
+                <p class="hero-description">
+                    I troubleshoot, support and understand Microsoft 365 environments, with a strong focus on Exchange Online, Identity, Security and Purview.
+                </p>
+
+                <div class="hero-actions">
+                    <a href="#projects" class="btn btn-primary">
+                        View Projects
+                    </a>
+
+                    <a href="https://www.linkedin.com/in/rafael-calm%C3%A3o-61033b391/"
+                       target="_blank"
+                       class="btn btn-secondary">
+                        LinkedIn
+                    </a>
+                </div>
+            </div>
+
+            <div class="profile-wrapper">
+                <div class="profile-frame">
+                    <img src="profile.jpg" alt="Rafael Calmão">
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+
+<!-- EXPERTISE -->
+
+<section id="expertise">
+    <div class="container">
+
+        <div class="section-heading">
+            <div class="label">Core Expertise</div>
+            <h2>Technical focus.</h2>
+            <p>
+                Microsoft 365 technologies and support areas I work with
+                across enterprise environments.
+            </p>
+        </div>
+
+        <div class="expertise-grid">
+
+            <div class="expertise-card">
+                <div class="number">01</div>
+                <h3>Exchange Online</h3>
+                <p>
+                    Mail flow, mailboxes, transport rules, connectors,
+                    hybrid environments, recipient management and
+                    advanced troubleshooting.
+                </p>
+            </div>
+
+            <div class="expertise-card">
+                <div class="number">02</div>
+                <h3>Identity</h3>
+                <p>
+                    Microsoft Entra ID, authentication, Conditional Access,
+                    directory synchronization, permissions and identity
+                    troubleshooting.
+                </p>
+            </div>
+
+            <div class="expertise-card">
+                <div class="number">03</div>
+                <h3>Security &amp; Compliance</h3>
+                <p>
+                    Microsoft 365 Security, Exchange Online Protection,
+                    Defender for Office 365, Microsoft Purview and
+                    retention management.
+                </p>
+            </div>
+
+            <div class="expertise-card">
+                <div class="number">04</div>
+                <h3>Workplace Technologies</h3>
+                <p>
+                    Microsoft Teams, SharePoint Online, permissions,
+                    administration and troubleshooting across the
+                    Microsoft 365 workplace ecosystem.
+                </p>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+
+<!-- EXPERIENCE -->
+
+<section id="experience">
+    <div class="container">
+
+        <div class="section-heading">
+            <div class="label">Experience</div>
+            <h2>From support to enterprise.</h2>
+            <p>
+                A progression through Microsoft 365 support, Exchange
+                escalation and enterprise-level technical support.
+            </p>
+        </div>
+
+        <div class="timeline">
+
+            <div class="timeline-item">
+                <h3>Enterprise Support</h3>
+                <div class="meta">
+                    Microsoft 365 / Exchange Online
+                </div>
+                <p>
+                    Supporting large enterprise customers with
+                    business-critical Microsoft 365 and Exchange Online
+                    issues, complex investigations and technical
+                    escalations.
+                </p>
+            </div>
+
+            <div class="timeline-item">
+                <h3>Tier 2 Exchange Support</h3>
+                <div class="meta">
+                    Exchange Online
+                </div>
+                <p>
+                    Handling complex Exchange Online escalations involving
+                    mail flow, hybrid environments, authentication,
+                    transport rules and directory-related issues.
+                </p>
+            </div>
+
+            <div class="timeline-item">
+                <h3>Microsoft 365 Support</h3>
+                <div class="meta">
+                    Microsoft 365 Ecosystem
+                </div>
+                <p>
+                    Providing technical support across Microsoft 365,
+                    workplace technologies, identity, security and
+                    service-related issues.
+                </p>
+            </div>
+
+            <div class="timeline-item">
+                <h3>Customer Support</h3>
+                <div class="meta">
+                    Technical &amp; Customer Service
+                </div>
+                <p>
+                    Building a strong foundation in customer service,
+                    problem solving, communication and structured
+                    technical support.
+                </p>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+
+<!-- RESPONSIBILITIES -->
+
+<section id="responsibilities">
+    <div class="container">
+
+        <div class="section-heading">
+            <div class="label">Responsibilities &amp; Achievements</div>
+            <h2>What I work with.</h2>
+        </div>
+
+        <div class="responsibility-grid">
+
+            <div class="responsibility-card">
+                <h3>Microsoft 365 &amp; Cloud Support</h3>
+
+                <ul>
+                    <li>
+                        <strong>Microsoft 365 Technical Support</strong>
+                        Provided support across Microsoft 365, consistently
+                        exceeding KPIs for CSAT, response time, case quality
+                        and resolution efficiency.
+                    </li>
+
+                    <li>
+                        <strong>Microsoft 365 Administration</strong>
+                        Worked with Exchange Online, SharePoint Online,
+                        Teams, Entra ID and Microsoft 365 Security.
+                    </li>
+
+                    <li>
+                        <strong>PowerShell &amp; Diagnostics</strong>
+                        Used PowerShell to investigate Microsoft 365 and
+                        Exchange issues and improve diagnostic efficiency.
+                    </li>
+                </ul>
+            </div>
+
+
+            <div class="responsibility-card">
+                <h3>Exchange, Identity &amp; Security</h3>
+
+                <ul>
+                    <li>
+                        <strong>Exchange Online &amp; Messaging</strong>
+                        Advanced troubleshooting covering mail flow,
+                        mailbox issues, transport rules, hybrid environments,
+                        directory synchronization and email authentication.
+                    </li>
+
+                    <li>
+                        <strong>Security &amp; Compliance</strong>
+                        Worked with EOP, Defender for Office 365, Microsoft
+                        Purview, retention policies, retention labels,
+                        retention tags and Exchange MRM.
+                    </li>
+
+                    <li>
+                        <strong>Identity &amp; Access</strong>
+                        Troubleshooting Entra ID authentication,
+                        Conditional Access, permissions and directory
+                        synchronization.
+                    </li>
+                </ul>
+            </div>
+
+
+            <div class="responsibility-card">
+                <h3>Enterprise &amp; Technical Leadership</h3>
+
+                <ul>
+                    <li>
+                        <strong>Enterprise Support</strong>
+                        Supported complex escalations and business-critical
+                        Exchange incidents while working with engineering
+                        teams on root cause analysis and long-term solutions.
+                    </li>
+
+                    <li>
+                        <strong>Technical Leadership &amp; Mentoring</strong>
+                        Provided technical guidance and shadowing support
+                        to Tier 1 engineers.
+                    </li>
+
+                    <li>
+                        <strong>Technical Scrums &amp; War Rooms</strong>
+                        Led technical scrums and war rooms with Tier 1
+                        engineers to coordinate troubleshooting and
+                        solutions.
+                    </li>
+
+                    <li>
+                        <strong>Action Plans &amp; Documentation</strong>
+                        Created structured action plans, troubleshooting
+                        guides and resolution procedures.
+                    </li>
+
+                    <li>
+                        <strong>Cross-Team Collaboration</strong>
+                        Worked with support and engineering teams on
+                        challenging issues requiring deeper technical
+                        investigation.
+                    </li>
+                </ul>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+
+<!-- ACHIEVEMENTS -->
+
+<section id="achievements">
+    <div class="container">
+
+        <div class="section-heading">
+            <div class="label">Achievements</div>
+            <h2>Impact beyond support.</h2>
+            <p>
+                Highlights from my experience supporting Microsoft 365
+                environments, solving complex technical issues and
+                contributing to team performance.
+            </p>
+        </div>
+
+        <div class="responsibility-grid">
+
+            <div class="responsibility-card">
+                <h3>Performance</h3>
+
+                <ul>
+                    <li>
+                        <strong>Consistent KPI Performance</strong>
+                        Consistently exceeded key performance indicators
+                        across customer satisfaction, response time,
+                        case quality and resolution efficiency.
+                    </li>
+
+                    <li>
+                        <strong>Career Progression</strong>
+                        Progressed from customer support into Microsoft 365
+                        technical support, Tier 2 Exchange support and
+                        enterprise-level support responsibilities.
+                    </li>
+                </ul>
+            </div>
+
+
+            <div class="responsibility-card">
+                <h3>Technical Impact</h3>
+
+                <ul>
+                    <li>
+                        <strong>Complex Exchange Troubleshooting</strong>
+                        Investigated complex Exchange Online issues
+                        involving mail flow, authentication, hybrid
+                        environments and recipient configuration.
+                    </li>
+
+                    <li>
+                        <strong>Diagnostic Automation</strong>
+                        Built a PowerShell-based Microsoft 365 Support
+                        Toolkit to centralise recurring diagnostic workflows
+                        and reduce repetitive troubleshooting steps.
+                    </li>
+                </ul>
+            </div>
+
+
+            <div class="responsibility-card">
+                <h3>Team Contribution</h3>
+
+                <ul>
+                    <li>
+                        <strong>Technical Mentoring</strong>
+                        Provided technical guidance and shadowing support
+                        to Tier 1 engineers during complex investigations.
+                    </li>
+
+                    <li>
+                        <strong>Technical Scrums &amp; War Rooms</strong>
+                        Participated in and led technical troubleshooting
+                        sessions focused on coordinating investigations
+                        and reaching effective resolutions.
+                    </li>
+                </ul>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+
+<!-- CERTIFICATIONS -->
+
+<section id="certifications">
+    <div class="container">
+
+        <div class="section-heading">
+            <div class="label">Certifications</div>
+            <h2>Microsoft 365 assessments.</h2>
+            <p>
+                Microsoft 365 and Modern Workplace technical assessments
+                covering Exchange Online, Teams and SharePoint Online.
+            </p>
+        </div>
+
+        <div class="certifications-wrapper">
+
+            <div class="cert-track-wrapper">
+                <div class="cert-track" id="certTrack"></div>
+            </div>
+
+            <div class="slider-controls">
+
+                <div class="slider-buttons">
+                    <button class="slider-btn" id="certPrev">
+                        ←
+                    </button>
+
+                    <button class="slider-btn" id="certNext">
+                        →
+                    </button>
+                </div>
+
+                <div class="slider-status">
+                    <span id="certPosition">1 / 5</span>
+                </div>
+
+                <div class="dots" id="certDots"></div>
+
+            </div>
+
+        </div>
+
+    </div>
+</section>
+
+
+<!-- PROJECT -->
+
+<section id="projects">
+    <div class="container">
+
+        <div class="section-heading">
+            <div class="label">Projects</div>
+            <h2>Built to solve real problems.</h2>
+            <p>
+                A personal Microsoft 365 support project focused on
+                diagnostics, automation and making repetitive technical
+                investigations easier to perform.
+            </p>
+        </div>
+
+
+        <div class="project-card">
+
+            <div class="project-top">
+
+                <div class="project-label">
+                    POWERSHELL PROJECT
+                </div>
+
+                <h3>
+                    Microsoft 365 Support Toolkit
+                </h3>
+
+                <p class="project-description">
+                    A PowerShell-based diagnostic toolkit designed to
+                    simplify Microsoft 365 and Exchange Online
+                    troubleshooting through a structured interface.
+                    The toolkit brings together common diagnostic
+                    workflows into a single environment, helping reduce
+                    repetitive investigation steps and providing
+                    structured technical output.
+                </p>
+
+                <div class="tech-tags">
+                    <span class="tech-tag">PowerShell</span>
+                    <span class="tech-tag">Exchange Online</span>
+                    <span class="tech-tag">Microsoft Graph</span>
+                    <span class="tech-tag">WPF / XAML</span>
+                    <span class="tech-tag">Entra ID</span>
+                </div>
+
+            </div>
+
+
+            <!-- PROJECT SCREENSHOTS -->
+
+            <div class="project-images">
+
+                <div class="project-image">
+
+                    <a href="ui.png" target="_blank">
+                        <img src="ui.png"
+                             alt="Microsoft 365 Support Toolkit interface">
+                    </a>
+
+                    <div class="image-caption">
+                        <strong>Toolkit Interface</strong>
+                        <span>WPF / XAML</span>
+                    </div>
+
+                </div>
+
+
+                <div class="project-image">
+
+                    <a href="output.png" target="_blank">
+                        <img src="output.png"
+                             alt="Microsoft 365 Support Toolkit diagnostic output">
+                    </a>
+
+                    <div class="image-caption">
+                        <strong>Diagnostic Output</strong>
+                        <span>PowerShell</span>
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- PROJECT DETAILS -->
+
+            <div class="project-details">
+
+                <div>
+
+                    <h4>What it does</h4>
+
+                    <ul>
+
+                        <li>
+                            Retrieves mailbox information, mailbox statistics and mailbox permissions for Microsoft 365 users.
+                        </li>
+
+                        <li>
+                            Inspects Inbox Rules and forwarding configuration to identify unexpected or problematic mail flow behaviour.
+                        </li>
+
+                        <li>
+                            Provides Mail User Overview diagnostics combining Exchange Online and Microsoft Graph information.
+                        </li>
+
+                        <li>
+                            Provides recipient provisioning diagnostics to investigate and resolve Recipient Object Failures and provisioning-related issues.
+                        </li>
+
+                        <li>
+                            Investigates ambiguous or incorrectly provisioned recipient objects using Exchange Online provisioning diagnostics.
+                        </li>
+
+                        <li>
+                            Checks and analyses Exchange Online recipient and mailbox configuration during troubleshooting.
+                        </li>
+
+                        <li>
+                            Uses Microsoft Graph and Exchange Online PowerShell to collect technical information from Microsoft 365 services.
+                        </li>
+
+                        <li>
+                            Runs predefined Microsoft 365 and Exchange Online diagnostic workflows from a single WPF/XAML interface.
+                        </li>
+
+                        <li>
+                            Centralises common Microsoft 365 troubleshooting workflows into a single support toolkit.
+                        </li>
+
+                        <li>
+                            Produces structured technical output to help analyse issues, identify configuration problems and streamline repetitive investigations.
+                        </li>
+
+                    </ul>
+
+                </div>
+
+
+                <div>
+
+                    <h4>Why I built it</h4>
+
+                    <p>
+                        Microsoft 365 troubleshooting often requires
+                        running several commands, checking different
+                        services and collecting information from multiple
+                        places before an issue can be understood.
+                    </p>
+
+                    <br>
+
+                    <p>
+                        I built this toolkit to bring those repetitive
+                        investigation steps together in a single
+                        interface. It combines PowerShell automation,
+                        Exchange Online and Microsoft Graph diagnostics
+                        with a simple WPF/XAML interface.
+                    </p>
+
+                    <br>
+
+                    <p>
+                        The goal is to make technical investigations
+                        faster, more structured and easier to repeat while
+                        continuing to expand the toolkit with additional
+                        Microsoft 365 diagnostics.
+                    </p>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+</section>
+
+
+<!-- CONTACT -->
+
+<section id="contact">
+    <div class="container">
+
+        <div class="contact-box">
+
+            <h2>
+                Let's connect.
+            </h2>
+
+            <p>
+                Interested in Microsoft 365, Modern Workplace,
+                Exchange Online, Identity, Security or technical
+                support opportunities? Feel free to connect with me.
+            </p>
+
+            <a
+                href="https://www.linkedin.com/in/rafael-calm%C3%A3o-61033b391/"
+                target="_blank"
+                class="btn btn-primary">
+                Connect on LinkedIn
+            </a>
+
+        </div>
+
+    </div>
+</section>
+
+
+<!-- FOOTER -->
+
+<footer>
+    <div class="container">
+
+        <div class="footer-inner">
+
+            <span>
+                © 2026 Rafael Calmão
+            </span>
+
+            <span>
+                Microsoft 365 · Exchange Online · Workplace
+            </span>
+
+        </div>
+    </div>
+</footer>
+
+
+<script>
+
+    /* =========================================
+       CERTIFICATIONS
+    ========================================= */
+
+    const certifications = [
+
+        {
+            title: "M365 MW EXO Enterprise Assessment",
+            file: "M365 MW EXO Enterprise Assessement.pdf"
+        },
+
+        {
+            title: "M365 MW SharePoint Online Enterprise Assessment",
+            file: "M365 MW SharePoint Online Enterprise Assessment.pdf"
+        },
+
+        {
+            title: "M365 MW Teams Enterprise Assessment",
+            file: "M365 MW Teams Enterprise Assessement.pdf"
+        },
+
+        {
+            title: "M365 Teams Advanced Assessment",
+            file: "M365 Teams Advanced Assessment.pdf"
+        },
+
+        {
+            title: "M365 Exchange Advanced Assessment",
+            file: "MW M365 Exchange Advanced Assessment.pdf"
+        }
+
+    ];
+
+
+    const certTrack = document.getElementById("certTrack");
+    const certDots = document.getElementById("certDots");
+    const certPosition = document.getElementById("certPosition");
+
+    let certIndex = 0;
+
+
+    function getVisibleCertificates() {
+
+        if (window.innerWidth <= 700) {
+            return 1;
+        }
+
+        if (window.innerWidth <= 1050) {
+            return 2;
+        }
+
+        return 3;
+    }
+
+
+    function createCertificates() {
+
+        certTrack.innerHTML = "";
+        certDots.innerHTML = "";
+
+        certifications.forEach((cert) => {
+
+            const card = document.createElement("div");
+            card.className = "cert-card";
+
+            const preview = document.createElement("div");
+            preview.className = "cert-preview";
+
+            const iframe = document.createElement("iframe");
+
+            iframe.src =
+                "Certificados/" +
+                encodeURIComponent(cert.file);
+
+            iframe.title = cert.title;
+
+            preview.appendChild(iframe);
+
+
+            const info = document.createElement("div");
+            info.className = "cert-info";
+
+            const title = document.createElement("h3");
+            title.textContent = cert.title;
+
+            const link = document.createElement("a");
+
+            link.href =
+                "Certificados/" +
+                encodeURIComponent(cert.file);
+
+            link.target = "_blank";
+            link.rel = "noopener noreferrer";
+            link.textContent = "View Certificate →";
+
+            info.appendChild(title);
+            info.appendChild(link);
+
+            card.appendChild(preview);
+            card.appendChild(info);
+
+            certTrack.appendChild(card);
+
+        });
+
+        updateDots();
+        updateSlider();
+
+    }
+
+
+    function updateDots() {
+
+        const visible = getVisibleCertificates();
+
+        const totalPositions =
+            Math.max(
+                1,
+                certifications.length - visible + 1
+            );
+
+
+        for (let i = 0; i < totalPositions; i++) {
+
+            const dot = document.createElement("span");
+
+            dot.className =
+                "dot" +
+                (i === certIndex ? " active" : "");
+
+            certDots.appendChild(dot);
+        }
+
+    }
+
+
+    function updateSlider() {
+
+        const visible = getVisibleCertificates();
+
+        const gap = 20;
+
+        const cardWidth =
+            (certTrack.parentElement.clientWidth -
+                gap * (visible - 1)) /
+            visible;
+
+        const maxIndex =
+            Math.max(
+                0,
+                certifications.length - visible
+            );
+
+        certIndex =
+            Math.min(certIndex, maxIndex);
+
+        const offset =
+            certIndex * (cardWidth + gap);
+
+        certTrack.style.transform =
+            `translateX(-${offset}px)`;
+
+        certPosition.textContent =
+            `${certIndex + 1} / ${maxIndex + 1}`;
+
+        document
+            .querySelectorAll(".dot")
+            .forEach((dot, index) => {
+
+                dot.classList.toggle(
+                    "active",
+                    index === certIndex
+                );
+
+            });
+
+    }
+
+
+    document
+        .getElementById("certNext")
+        .addEventListener("click", () => {
+
+            const visible =
+                getVisibleCertificates();
+
+            const maxIndex =
+                Math.max(
+                    0,
+                    certifications.length - visible
+                );
+
+            if (certIndex < maxIndex) {
+                certIndex++;
+            } else {
+                certIndex = 0;
+            }
+
+            updateSlider();
+
+        });
+
+
+    document
+        .getElementById("certPrev")
+        .addEventListener("click", () => {
+
+            const visible =
+                getVisibleCertificates();
+
+            const maxIndex =
+                Math.max(
+                    0,
+                    certifications.length - visible
+                );
+
+            if (certIndex > 0) {
+                certIndex--;
+            } else {
+                certIndex = maxIndex;
+            }
+
+            updateSlider();
+
+        });
+
+
+    window.addEventListener(
+        "resize",
+        () => {
+
+            certIndex = 0;
+
+            updateDots();
+            updateSlider();
+
+        }
+    );
+
+
+    createCertificates();
+
+</script>
+
+</body>
+</html>
+```
+
+**A única mudança relativamente à versão anterior é:**
+
+```html
+<li><a href="#responsibilities">What I Work With</a></li>
+```
+
+e:
+
+```html
+<section id="responsibilities">
+```
+
+Portanto, **What I Work With → vai diretamente para “What I work with.”**. O conteúdo dessa secção não foi alterado.
