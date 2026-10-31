@@ -96,8 +96,20 @@
         section {
             max-width: var(--max-width);
             margin: 0 auto;
-            padding: 100px 24px;
+            padding: 70px 24px;
             scroll-margin-top: 100px;
+
+            /* Prevent text caret from appearing after navigation */
+            caret-color: transparent;
+        }
+
+        section h1,
+        section h2,
+        section h3,
+        section p,
+        section div,
+        section span {
+            caret-color: transparent;
         }
 
         /* =========================================================
@@ -172,6 +184,11 @@
                 background 0.25s ease,
                 border-color 0.25s ease,
                 transform 0.25s ease;
+
+            /* Prevent caret */
+            caret-color: transparent;
+            user-select: none;
+            -webkit-user-select: none;
         }
 
         .nav-links a:hover {
@@ -201,15 +218,15 @@
            ========================================================= */
 
         .hero {
-            min-height: 760px;
+            min-height: 680px;
 
             max-width: var(--max-width);
 
             margin: 0 auto;
 
             padding:
-                155px 24px
-                90px;
+                125px 24px
+                70px;
 
             display: grid;
             grid-template-columns:
@@ -217,7 +234,7 @@
                 minmax(400px, 1.2fr);
 
             align-items: center;
-            gap: 80px;
+            gap: 55px;
 
             position: relative;
         }
@@ -362,32 +379,6 @@
             margin-bottom: 28px;
         }
 
-        .hero-technologies {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 9px;
-
-            margin-bottom: 32px;
-        }
-
-        .hero-tech {
-            color: #b8c8da;
-
-            font-size: 11px;
-            font-weight: 600;
-
-            padding: 6px 10px;
-
-            border-radius: 999px;
-
-            border:
-                1px solid
-                rgba(255, 255, 255, 0.07);
-
-            background:
-                rgba(255, 255, 255, 0.025);
-        }
-
         .hero-buttons {
             display: flex;
             flex-wrap: wrap;
@@ -460,7 +451,7 @@
 
             margin:
                 0 auto
-                35px;
+                20px;
 
             padding:
                 23px 28px;
@@ -627,7 +618,7 @@
            ========================================================= */
 
         .section-heading {
-            margin-bottom: 45px;
+            margin-bottom: 30px;
         }
 
         .section-label {
@@ -656,7 +647,7 @@
 
             color: var(--muted);
 
-            margin-top: 15px;
+            margin-top: 10px;
 
             font-size: 15px;
         }
@@ -788,7 +779,7 @@
         .timeline-item {
             position: relative;
 
-            padding: 0 0 45px 28px;
+            padding: 0 0 35px 28px;
         }
 
         .timeline-item:last-child {
@@ -853,7 +844,8 @@
            RESPONSIBILITIES
            ========================================================= */
 
-        .responsibilities-grid {
+        .responsibilities-grid,
+        .responsibility-grid {
             display: grid;
 
             grid-template-columns:
@@ -981,6 +973,56 @@
 
             background:
                 rgba(255, 255, 255, 0.018);
+
+            overflow: hidden;
+        }
+
+        .cert-preview {
+            width: calc(100% + 50px);
+            height: 250px;
+
+            margin:
+                -25px
+                -25px
+                22px;
+
+            background: #070b10;
+
+            border-bottom:
+                1px solid
+                rgba(255, 255, 255, 0.08);
+
+            overflow: hidden;
+
+            position: relative;
+        }
+
+        .cert-preview iframe {
+            width: 100%;
+            height: 100%;
+
+            border: 0;
+
+            background: #ffffff;
+
+            pointer-events: none;
+        }
+
+        .cert-preview::after {
+            content: "";
+
+            position: absolute;
+
+            inset: 0;
+
+            background:
+                linear-gradient(
+                    to bottom,
+                    transparent 75%,
+                    rgba(5, 8, 13, 0.25)
+                );
+
+            pointer-events: none;
         }
 
         .cert-card h3 {
@@ -1260,14 +1302,6 @@
                 margin-right: auto;
             }
 
-            .hero-technologies {
-                justify-content: center;
-            }
-
-            .hero-buttons {
-                justify-content: center;
-            }
-
             .expertise-grid {
                 grid-template-columns:
                     repeat(2, 1fr);
@@ -1290,7 +1324,7 @@
             }
 
             .hero {
-                padding-top: 210px;
+                padding-top: 190px;
             }
 
             .hero h1 {
@@ -1298,6 +1332,7 @@
             }
 
             .responsibilities-grid,
+            .responsibility-grid,
             .achievements-grid {
                 grid-template-columns: 1fr;
             }
@@ -1305,13 +1340,17 @@
             .cert-card {
                 min-width: 100%;
             }
+
+            .cert-preview {
+                height: 300px;
+            }
         }
 
         @media (max-width: 560px) {
 
             section {
                 padding:
-                    75px 18px;
+                    60px 18px;
             }
 
             .hero {
@@ -1361,6 +1400,11 @@
                 padding:
                     40px 20px;
             }
+
+            .cert-preview {
+                height: 260px;
+            }
+
         }
 
     </style>
@@ -1463,34 +1507,6 @@
                 Identity, Security and Purview.
             </p>
 
-            <div class="hero-technologies">
-
-                <span class="hero-tech">
-                    Exchange Online
-                </span>
-
-                <span class="hero-tech">
-                    Entra ID
-                </span>
-
-                <span class="hero-tech">
-                    Security
-                </span>
-
-                <span class="hero-tech">
-                    Purview
-                </span>
-
-                <span class="hero-tech">
-                    Teams
-                </span>
-
-                <span class="hero-tech">
-                    SharePoint
-                </span>
-
-            </div>
-
             <div class="hero-buttons">
 
                 <a
@@ -1586,9 +1602,7 @@
             </div>
 
             <h2>
-                Microsoft 365,
-                <br>
-                built around people.
+                Technical focus.   
             </h2>
 
             <p>
@@ -1959,49 +1973,84 @@
         </div>
 
 
-        <div class="achievements-grid">
+        <div class="responsibility-grid">
 
-            <div class="achievement">
+            <div class="responsibility-card">
 
                 <h3>
                     Performance
                 </h3>
 
-                <p>
-                    Consistently focused on strong customer
-                    satisfaction, response time, case quality
-                    and resolution efficiency.
-                </p>
+                <ul>
+
+                    <li>
+                        <strong>Consistent KPI Performance</strong>
+                        Consistently exceeded key performance indicators
+                        across customer satisfaction, response time,
+                        case quality and resolution efficiency.
+                    </li>
+
+                    <li>
+                        <strong>Career Progression</strong>
+                        Progressed from customer support into Microsoft 365
+                        technical support, Tier 2 Exchange support and
+                        enterprise-level support responsibilities.
+                    </li>
+
+                </ul>
 
             </div>
 
 
-            <div class="achievement">
+            <div class="responsibility-card">
 
                 <h3>
                     Technical Impact
                 </h3>
 
-                <p>
-                    Progressed into increasingly complex
-                    Exchange Online and enterprise support
-                    responsibilities.
-                </p>
+                <ul>
+
+                    <li>
+                        <strong>Complex Exchange Troubleshooting</strong>
+                        Investigated complex Exchange Online issues
+                        involving mail flow, authentication, hybrid
+                        environments and recipient configuration.
+                    </li>
+
+                    <li>
+                        <strong>Diagnostic Automation</strong>
+                        Built a PowerShell-based Microsoft 365 Support
+                        Toolkit to centralise recurring diagnostic workflows
+                        and reduce repetitive troubleshooting steps.
+                    </li>
+
+                </ul>
 
             </div>
 
 
-            <div class="achievement">
+            <div class="responsibility-card">
 
                 <h3>
                     Team Contribution
                 </h3>
 
-                <p>
-                    Sharing technical knowledge, supporting
-                    colleagues and contributing to effective
-                    troubleshooting and case resolution.
-                </p>
+                <ul>
+
+                    <li>
+                        <strong>Technical Mentoring</strong>
+                        Provided technical guidance and shadowing support
+                        to Tier 1 engineers during complex investigations.
+                    </li>
+
+                    <li>
+                        <strong>Technical Scrums &amp; War Rooms</strong>
+                        Participated in and led technical troubleshooting
+                        sessions focused on coordinating investigations
+                        and reaching effective resolutions.
+                    </li>
+
+                </ul>
 
             </div>
 
@@ -2263,7 +2312,7 @@
 
         /* =========================================================
            CERTIFICATIONS
-           ========================================================= */
+        ========================================================= */
 
         const certifications = [
 
@@ -2338,6 +2387,15 @@
                 "cert-card";
 
             card.innerHTML = `
+
+                <div class="cert-preview">
+
+                    <iframe
+                        src="${cert.file}#toolbar=0&navpanes=0&scrollbar=0"
+                        title="${cert.title}"
+                    ></iframe>
+
+                </div>
 
                 <h3>
                     ${cert.title}
@@ -2467,7 +2525,7 @@
 
         /* =========================================================
            NAVIGATION ACTIVE STATE
-           ========================================================= */
+        ========================================================= */
 
         const navLinks =
             Array.from(
@@ -2487,44 +2545,134 @@
                 .filter(Boolean);
 
 
+        let clickedSection = null;
+        let navigationTimeout = null;
+
+
         function setActiveNav(id) {
 
             navLinks.forEach(link => {
 
-                const target =
-                    link.getAttribute("href");
-
-                link.classList.toggle(
-                    "active",
-                    target === `#${id}`
-                );
+                link.classList.remove("active");
 
             });
+
+
+            const activeLink =
+                navLinks.find(
+                    link =>
+                        link.getAttribute("href") ===
+                        `#${id}`
+                );
+
+
+            if (activeLink) {
+
+                activeLink.classList.add("active");
+
+            }
 
         }
 
 
         /*
-         * Immediately activate the clicked navigation item.
-         * This prevents the previous section from remaining highlighted.
+         * CLICK NAVIGATION
+         *
+         * The clicked section stays active while the
+         * smooth scroll animation is running.
          */
 
         navLinks.forEach(link => {
 
             link.addEventListener(
                 "click",
-                () => {
+                event => {
 
                     const target =
                         link.getAttribute("href");
 
-                    if (target) {
+                    const section =
+                        document.querySelector(target);
 
-                        setActiveNav(
-                            target.substring(1)
+                    if (!section) {
+                        return;
+                    }
+
+
+                    event.preventDefault();
+
+
+                    const sectionId =
+                        target.substring(1);
+
+
+                    clickedSection =
+                        sectionId;
+
+
+                    setActiveNav(
+                        sectionId
+                    );
+
+
+                    if (navigationTimeout) {
+
+                        clearTimeout(
+                            navigationTimeout
                         );
 
                     }
+
+
+                    window.scrollTo({
+
+                        top:
+                            section.offsetTop - 100,
+
+                        behavior:
+                            "smooth"
+
+                    });
+
+
+                    /*
+                     * Remove focus from the clicked
+                     * navigation button so no caret/focus
+                     * effect remains.
+                     */
+
+                    link.blur();
+
+
+                    if (
+                        window.getSelection
+                    ) {
+
+                        const selection =
+                            window.getSelection();
+
+                        selection.removeAllRanges();
+
+                    }
+
+
+                    /*
+                     * Keep the clicked section active
+                     * during the smooth scroll.
+                     */
+
+                    navigationTimeout =
+                        setTimeout(
+                            () => {
+
+                                clickedSection =
+                                    null;
+
+                                updateActiveNav();
+
+                            },
+                            900
+                        );
 
                 }
             );
@@ -2533,44 +2681,69 @@
 
 
         /*
-         * Determine the section closest to the
-         * visual center of the viewport.
-         *
-         * This is more reliable than simply checking
-         * offsetTop, especially for long sections.
+         * SCROLL NAVIGATION
          */
 
         function updateActiveNav() {
+
+            /*
+             * While the user has just clicked a navigation
+             * item, do not let the scroll event immediately
+             * overwrite the selected item.
+             */
+
+            if (clickedSection) {
+
+                setActiveNav(
+                    clickedSection
+                );
+
+                return;
+
+            }
+
+
+            /*
+             * Contact must always be active when the
+             * bottom of the document is reached.
+             */
+
+            const atBottom =
+                window.innerHeight +
+                window.scrollY >=
+                document.documentElement.scrollHeight - 5;
+
+
+            if (atBottom) {
+
+                setActiveNav("contact");
+
+                return;
+
+            }
+
+
+            /*
+             * Determine the section currently visible.
+             */
 
             const marker =
                 window.scrollY +
                 window.innerHeight * 0.30;
 
-            let closestSection = null;
 
-            let closestDistance =
-                Infinity;
+            let activeSection =
+                null;
 
 
             navSections.forEach(section => {
 
-                const sectionTop =
-                    section.offsetTop;
-
-                const distance =
-                    Math.abs(
-                        sectionTop - marker
-                    );
-
                 if (
-                    sectionTop <= marker &&
-                    distance < closestDistance
+                    section.offsetTop <=
+                    marker
                 ) {
 
-                    closestDistance =
-                        distance;
-
-                    closestSection =
+                    activeSection =
                         section;
 
                 }
@@ -2578,16 +2751,10 @@
             });
 
 
-            /*
-             * If we're at the very top,
-             * Home is not part of the nav list,
-             * so don't force another section.
-             */
-
-            if (closestSection) {
+            if (activeSection) {
 
                 setActiveNav(
-                    closestSection.id
+                    activeSection.id
                 );
 
             }
@@ -2595,24 +2762,25 @@
         }
 
 
-        let scrollTimeout;
+        let scrollFrame = null;
 
 
         window.addEventListener(
             "scroll",
             () => {
 
-                if (scrollTimeout) {
+                if (scrollFrame) {
                     return;
                 }
 
-                scrollTimeout =
+
+                scrollFrame =
                     requestAnimationFrame(
                         () => {
 
                             updateActiveNav();
 
-                            scrollTimeout =
+                            scrollFrame =
                                 null;
 
                         }
@@ -2627,12 +2795,16 @@
 
         window.addEventListener(
             "resize",
-            updateActiveNav
+            () => {
+
+                updateActiveNav();
+
+            }
         );
 
 
         /*
-         * Initial state
+         * Initial navigation state
          */
 
         updateActiveNav();
